@@ -51,10 +51,15 @@ public class AppUser implements  UserDetails {
 
     @Enumerated(EnumType.STRING)
     private AppUserRole appUserRole;
+
+    @Enumerated(EnumType.STRING)
+    private AppUserStatus activeStatus;
+    
     private Boolean locked;
     private Boolean enabled;
     private Set<ChatRoom> chatRooms = new HashSet<ChatRoom>();
     private LocalDateTime accountCreatedAt;
+
 
 
 

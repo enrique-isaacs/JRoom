@@ -39,7 +39,7 @@ public class ChatRoom {
     private AppUser createdBy;
     private LocalDateTime createdAt;
     private RoomCode code; 
-    private Long userCount;
+    private Long numberOfUsersInRoom;
 
     
 }
