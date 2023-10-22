@@ -4,14 +4,11 @@ package com.enrique.JRoom.jRoom.entities.appuser;
 import java.time.LocalDateTime;
 import java.util.Collection;
 import java.util.Collections;
-import java.util.HashSet;
 import java.util.Set;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-
-import com.enrique.JRoom.jRoom.entities.chatRoom.ChatRoom;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -43,8 +40,7 @@ public class AppUser implements  UserDetails {
         generator = "user_id_seq"
     )
     private Long id;
-    private String name;
-    private String lastName;
+
     private String username;
     private String email;
     private String password;
@@ -57,25 +53,24 @@ public class AppUser implements  UserDetails {
     
     private Boolean locked;
     private Boolean enabled;
-    private Set<ChatRoom> chatRooms = new HashSet<ChatRoom>();
+    private Set<Long> chatRooms;
     private LocalDateTime accountCreatedAt;
 
 
 
 
-    public AppUser(String name,
-                   String lastName,
-                   String username,
+    public AppUser(String username,
                    String email,
                    String password,
-                   Set<ChatRoom> chatRooms,
+                   Set<Long> chatRooms,
                    AppUserRole appUserRole,
                    Boolean locked,
                    Boolean enabled,
-                   LocalDateTime accountCreatedAt){
+                   LocalDateTime accountCreatedAt,
+                   AppUserStatus activeStatus
+                   ){
 
-        this.name = name;
-        this.lastName = lastName;
+
         this.username = username;
         this.email = email;
         this.password = password;
@@ -83,6 +78,7 @@ public class AppUser implements  UserDetails {
         this.appUserRole = appUserRole;
         this.locked = locked;
         this.enabled = enabled;
+        this.activeStatus = activeStatus;
   
     }
 
